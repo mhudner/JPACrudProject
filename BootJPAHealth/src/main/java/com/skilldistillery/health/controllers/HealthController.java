@@ -2,6 +2,7 @@ package com.skilldistillery.health.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +13,10 @@ import com.skilldistillery.health.data.HealthDAO;
 import com.skilldistillery.health.entities.HealthLog;
 
 @Controller
-
 public class HealthController {
 	
 	
-	
+	@Autowired
 	private HealthDAO healthDAO;
 
 	public HealthController(HealthDAO healthDAO) {
@@ -28,11 +28,11 @@ public class HealthController {
 		return "index";
 	}
 	
-	@GetMapping({"getHealth.do"})
+	@PostMapping({"getHealth.do"})
 	public String findById(@RequestParam("id")int id, Model model) {
 	HealthLog healthlog = healthDAO.findById(id);
 	model.addAttribute("healthLog", healthlog);
-	return "views/show";
+	return "views/showid";
 	
 	}
 	
@@ -42,41 +42,46 @@ public class HealthController {
 		
 		model.addAttribute("healthLogs",health);
 
-	  return "views/show";
+	  return "views/showuser";
 	}
 	
-	@PostMapping({"createLog.do"})
+	@GetMapping({"createLog.do"})
 	public String createLog(HealthLog log, Model model) {
 		healthDAO.createNewLog(log);
 		model.addAttribute("healthLog" , log);
-		return "views/show";
+		return "views/addEntry";
 		
 	}
 	
 	@PostMapping({"updateLog.do"})
-	public String updateLog(HealthLog log, Model model) {
-		  boolean success = healthDAO.updateLog(log);
-	        if (success) {
-	            model.addAttribute("updateLog", "Log updated successfully");
-	        } else {
-	            model.addAttribute("updateLog", "Log not found or update failed");
-	        }
-	        model.addAttribute("healthLog", log);
-	        return "views/show";
+	public String updateLog(@RequestParam("id")int id, HealthLog log, Model model) {
+			healthDAO.updateExistingLog(log, id);
+			System.out.println("*******************************************************");
+			System.out.println(id);
+			System.out.println(log);
+			System.out.println("USERNAME !!!!"+log.getUserName());
+			return "views/showid";
+		
 	
 	}
 
 	
-	@PostMapping({"deleteLog.do"})
-	public String deleteLog(HealthLog log, Model model) {
-	        boolean success = healthDAO.deleteLog(log);
-	        if (success) {
-	            model.addAttribute("updateLog", "Log deleted successfully");
-	        } else {
-	            model.addAttribute("updateLog", "Log not found or delete failed");
-	        }
-	        return "redirect:/index";
+//	@GetMapping({"deleteLog.do"})
+//	public String deleteLog(@RequestParam("id")int id, Model model) {
+//	        	boolean itWorked = healthDAO.deleteLog(id);
+//	        	  if (itWorked) {
+//	                  model.addAttribute("message", "Log Id #: " + id + " have been deleted successfully.");
+//	              } else {
+//	                  model.addAttribute("error", "No log found with the id:  " + id + ".");
+//	              }
+//	              return "redirect:index";
+//	
+//	}
 	
+	@PostMapping("deleteLog.do")
+	public String deleteSnack(@RequestParam("id") Integer id) {
+		healthDAO.deleteLog(id);
+		return "redirect:/index.do";
 	}
 
 

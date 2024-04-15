@@ -14,6 +14,8 @@ import jakarta.persistence.Table;
 	@Table(name="health_log")
 	public class HealthLog {    
 	
+		
+		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -34,6 +36,8 @@ import jakarta.persistence.Table;
 	private int waterOunces;
 	
 	private String mood;
+	
+	//public HealthLog
 	
 	public HealthLog() {}
 	   

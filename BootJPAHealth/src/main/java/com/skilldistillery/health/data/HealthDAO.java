@@ -12,8 +12,9 @@ public interface HealthDAO {
 
 	HealthLog createNewLog(HealthLog log);
 
-	boolean updateLog(HealthLog log);
+	HealthLog deleteLog(int id);
 
-	boolean deleteLog(HealthLog log);
+
+	HealthLog updateExistingLog(HealthLog log, int id);
 
 }

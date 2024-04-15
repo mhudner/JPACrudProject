@@ -2,16 +2,17 @@ package com.skilldistillery.health.data;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.health.entities.HealthLog;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 
-
-@Repository
+@Service
+@Transactional
 public class HealthDAOImpl implements HealthDAO {
 	
 	
@@ -22,8 +23,10 @@ public class HealthDAOImpl implements HealthDAO {
 	@Override
 	public HealthLog findById(int id) {
 		// TODO Auto-generated method stub
-		return em.find(HealthLog.class, 1);
+		HealthLog health = em.find(HealthLog.class, id);
+		return health;
 	}
+	
 
 	@Override
 	public List<HealthLog> findByUserName(String userName) {
@@ -46,29 +49,27 @@ public class HealthDAOImpl implements HealthDAO {
 	}
 
 	@Override
-	public boolean updateLog(HealthLog log) {
-		boolean itWorked = false;
-		HealthLog updatedLog = em.find(HealthLog.class, log.getId());
-		
-		updatedLog.setUserName(updatedLog.getUserName());
-		updatedLog.setLogDate(updatedLog.getLogDate());
-		updatedLog.setTotalSteps(updatedLog.getTotalSteps());
-		updatedLog.setSleepMinutes(updatedLog.getSleepMinutes());
-		updatedLog.setWaterOunces(updatedLog.getWaterOunces());
-		updatedLog.setMood(updatedLog.getMood());
-			System.out.println(updatedLog + " has been updated.");
-		
-			return itWorked;
+	 public HealthLog updateExistingLog(HealthLog log, int id) {
+		System.out.println("**********************************" + log);
+        HealthLog newLog = em.find(HealthLog.class, id);
+        		newLog.setUserName(log.getUserName());
+        		newLog.setLogDate(log.getLogDate());
+        		newLog.setTotalSteps(log.getTotalSteps());
+        		newLog.setSleepMinutes(log.getSleepMinutes());
+        		newLog.setWaterOunces(log.getWaterOunces());
+        		newLog.setMood(log.getMood());
+        		
+           
+    return newLog;
 	}
 
 	@Override
-	public boolean deleteLog(HealthLog log) {
-		boolean itWorked = false;
-		HealthLog foundLog = em.find(HealthLog.class, 1);
-		
-			em.remove(foundLog);
-			System.out.println(foundLog + " has been removed.");
-			return itWorked;
+	public HealthLog deleteLog(int id) {  
+		HealthLog log = em.find(HealthLog.class, id);
+		if (log != null) {
+			em.remove(log);
+		}
+		return log;
 
 	}
 

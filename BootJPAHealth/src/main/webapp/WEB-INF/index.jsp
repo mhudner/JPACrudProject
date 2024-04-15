@@ -12,78 +12,24 @@
 <body>
 
 
-<form action="getHealth.do" method="GET">
-  Find User by ID: <input type="text" name="id" />
+<form action="getHealth.do" method="POST">
+  Find an Entry by ID: <input type="text" name="id" />
   <input type="submit" value="Submit" />
 </form>
+
 <form action="getHealthUserName.do" method="GET">
-  Find User by Name: <input type="text" name="userName" />
+  Search Entries by User: <input type="text" name="userName" />
   <input type="submit" value="Submit" />
 </form>
 
-
-
-<form action="createLog.do" method="POST">
-					<h1>Add A Log</h1>
-
-					<label class="form-label">User name </label> 
-					<input class="form-control" type="text" name="userName" required />
-					
-					
-					<label class="form-label">Log Date</label> 
-					<input class="form-control" type="text" name="logDate" /> 
-					
-					
-					<label class="form-label">Total Steps</label>
-					<input class="form-control" type="text" name="totalSteps" />
-		
-			
-					<label class="form-label">Sleep in Minutes</label> 
-					<input class="form-control" type="text" name="sleepMinutes" /> 
-					
-					<label class="form-label">Ounces of Water </label> 
-					<input class="form-control" type="text" name="waterOunces" /> 
-					
-					<label class="form-label">Mood</label>
-					<input class="form-control" type="text" name="mood"/>
-		
-						
-					<input class="btn btn-primary" type="submit" value="submit" />
-				</form>
-
-<form action="updateLog" method="POST">
-    <input type="hidden" name="id" value="0"/>
-    <h1>Edit A Log</h1>
-    <label>User name: </label>
-    <input type="text" name="userName" required />
-   
-
-					<label class="form-label">User name </label> 
-					<input class="form-control" type="text" name="userName" required />
-					
-					
-					<label class="form-label">Log Date</label> 
-					<input class="form-control" type="text" name="logDate" /> 
-					
-					
-					<label class="form-label">Total Steps</label>
-					<input class="form-control" type="text" name="totalSteps" />
-		
-			
-					<label class="form-label">Sleep in Minutes</label> 
-					<input class="form-control" type="text" name="sleepMinutes" /> 
-					
-					<label class="form-label">Ounces of Water </label> 
-					<input class="form-control" type="text" name="waterOunces" /> 
-					
-					<label class="form-label">Mood</label>
-					<input class="form-control" type="text" name="mood"/>
-		
-						
-					<input class="btn btn-primary" type="submit" value="submit" />
-				</form>
-
-
+ <div class="form-container">
+        <h5>Delete a log entry</h5>
+        <form action="delete.do" method="POST">
+            <label for="id">Log ID:</label>
+            <input type="text" id="id" name="id" />
+            <input type="submit" value="Delete" />
+        </form>
+    </div>
 
 </body>
 </html>
