@@ -45,18 +45,25 @@ public class HealthController {
 	  return "views/showuser";
 	}
 	
-	@GetMapping({"createLog.do"})
-	public String createLog(HealthLog log, Model model) {
+	@PostMapping({"createLog.do"})
+	public String createLog( @RequestParam("userName") String userName, @RequestParam("logDate") String logDate, @RequestParam("totalSteps") Integer totalSteps, @RequestParam("sleepMinutes") Integer sleepMinutes, @RequestParam("waterOunces") Integer waterOunces, @RequestParam("mood") String mood, Model model) {
+		HealthLog log = new HealthLog();
+		log.setUserName(userName);
+		log.setLogDate(logDate);
+		log.setTotalSteps(totalSteps);
+		log.setSleepMinutes(sleepMinutes);
+		log.setWaterOunces(waterOunces);
+		log.setMood(mood);
+		System.out.println("*******************************************************");
 		healthDAO.createNewLog(log);
-		model.addAttribute("healthLog" , log);
-		return "views/addEntry";
+		return "index";
+		
 		
 	}
 	
 	@PostMapping({"updateLog.do"})
 	public String updateLog(@RequestParam("id")int id, HealthLog log, Model model) {
 			healthDAO.updateExistingLog(log, id);
-			System.out.println("*******************************************************");
 			System.out.println(id);
 			System.out.println(log);
 			System.out.println("USERNAME !!!!"+log.getUserName());
@@ -66,20 +73,8 @@ public class HealthController {
 	}
 
 	
-//	@GetMapping({"deleteLog.do"})
-//	public String deleteLog(@RequestParam("id")int id, Model model) {
-//	        	boolean itWorked = healthDAO.deleteLog(id);
-//	        	  if (itWorked) {
-//	                  model.addAttribute("message", "Log Id #: " + id + " have been deleted successfully.");
-//	              } else {
-//	                  model.addAttribute("error", "No log found with the id:  " + id + ".");
-//	              }
-//	              return "redirect:index";
-//	
-//	}
-	
 	@PostMapping("deleteLog.do")
-	public String deleteSnack(@RequestParam("id") Integer id) {
+	public String deleteLog(@RequestParam("id") Integer id) {
 		healthDAO.deleteLog(id);
 		return "redirect:/index.do";
 	}

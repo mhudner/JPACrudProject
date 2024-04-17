@@ -1,73 +1,122 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-    <%@ taglib uri="jakarta.tags.core" prefix="c" %>  
-    
-<!DOCTYPE html>
-<html>
+	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="jakarta.tags.core" prefix="c"%>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Health Log</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap demo</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+	
+
+
+<title>Insert title here</title>
 </head>
+
+
 <body>
-
 <div class="container">
-    <div class="form-container">
-        <h2>Update Log</h2>
-        <form id="updateLog" action="updateLog.do?=${healthLog}" method="POST">
-            <input type="hidden" name="id" value="${healthLog.id}"/>
-            <label for="username">User Name:</label>
-            <input type="text" id="userName" name="userName" value="${healthLog.userName}"/>
-            <label for="logDate">Date of Log Entry:</label>
-            <input type="text" id="logDate" name="logDate" value="${healthLog.logDate}"/>
-            <label for="totalSteps">Total Steps:</label>
-            <input type="text" id="totalSteps" name="totalSteps" value="${healthLog.totalSteps}"/>
-            <label for="sleepMinutes">Sleep in Minutes:</label>
-            <input type="text" id="sleepMinutes" name="sleepMinutes" value="${healthLog.sleepMinutes}"/>
-            <label for="waterOunces">Ounces of Water:</label>
-            <input type="text" id="waterOunces" name="waterOunces"value="${healthLog.waterOunces}" />
-            <label for="mood">Mood:</label>
-            <input type="text" id="mood" name="mood" value="${healthLog.mood}"/>
-            <input type="submit" value= "Update">
-        </form>
-    </div>
-<div>
-        <h1>Log Entry</h1>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>User Name</th>
-                <th>Log Date</th>
-                <th>Total Steps</th>
-                <th>Sleep in Minutes</th>
-                <th>Ounces of Water</th>
-                <th>Mood</th>
-                <th>Delete</th>
-                
-            </tr>
-               
-            <tr>
-                <td>${healthLog.id}</td>
-                <td>${healthLog.userName}</td>
-                <td>${healthLog.logDate}</td>
-                <td>${healthLog.totalSteps}</td>
-                <td>${healthLog.sleepMinutes}</td>
-                <td>${healthLog.waterOunces}</td>
-                <td>${healthLog.mood}</td>
-                <td><form action="deleteEntry.do" onsubmit="return window.confirm('Are you sure you want to delete this entity?');" method="POST">
-										<div class="form-group">
-											<input type="hidden" class="form-control" id="id" name="id"
-												value="<c:out value='${healthLog.id}' />">
-										</div>
-										<button type="submit"  class="btn btn-danger">Delete
-											this Entry</button>
-									</form>
-									</td>
-            </tr>
-    
-        </table>
-    </div>
-</div>
+<blockquote class="blockquote text-center">  <h1><u>
+  <p class="bg-info text-black"><h1 style="font-family:american typewriter,serif;"><h1 style="font-size:190%;">Welcome to my Communal Health Log</p></h1></h1></h1></u>
+</blockquote>
 
+</div>
+<center>
+<style>
+body {
+  background-image: url('https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2358&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+}
+
+h3 {
+  text-shadow: 0 0 2px white;
+  padding-top: 0%;
+}
+body{
+font-family:'Palatino', serif;}
+</style>
+
+<style>
+h2 {
+  text-shadow: 0 0 2px white;
+  padding-top: 0%;
+}</style>
+
+	
+		
+		<h2><b>Log Entry</b></h2>
+		<div>
+			<table>
+				<tr>
+					<th>ID:</th>
+					<td>${healthLog.id}</td>
+					</tr>
+					<tr><th>User Name:</th>
+					<td>${healthLog.userName}</td>
+					</tr>
+					<tr>
+					<th>Log Date:</th>
+					<td>${healthLog.logDate}</td></tr>
+					<tr>
+					<th>Total Steps:</th>
+					<td>${healthLog.totalSteps}</td></tr>
+					<tr>
+					<th>Sleep in Minutes:</th>
+					<td>${healthLog.sleepMinutes}</td></tr>
+					<tr>
+					<th>Ounces of Water:</th>
+					<td>${healthLog.waterOunces}</td></tr>
+					<tr>
+					<th>Mood:</th>
+					<td>${healthLog.mood}</td>
+					</tr>
+				<tr>
+					<td><form action="deleteLog.do"
+							onsubmit="return window.confirm('Are you sure you want to delete this log?');"
+							method="POST">
+							<div class="form-group">
+								<input type="hidden" class="form-control" id="id" name="id"
+									value="<c:out value='${healthLog.id}' />">
+							</div>
+							<button type="submit" class="btn btn-danger">Delete	Entry</button>
+						</form></td>
+				</tr>
+
+			</table>
+			</div>
+		
+<br>
+		<div class="container">
+			<div class="form-container">
+				<h2><b>Update Log</b></h2>
+				<form id="updateLog" action="updateLog.do?=${healthLog}"
+					method="POST">
+					<input type="hidden" name="id" value="${healthLog.id}" /> <label
+						for="username"><b>User Name:</b></label> <input type="text" id="userName"
+						name="userName" value="${healthLog.userName}" /> 
+						<br>
+						<label for="logDate"><b>Date of Log Entry:</b></label> <input type="text"
+						id="logDate" name="logDate" value="${healthLog.logDate}" /> 
+						<br>
+						<label for="totalSteps"><b>Total Steps:</b></label> <input type="text"
+						id="totalSteps" name="totalSteps" value="${healthLog.totalSteps}" />
+					<br>
+					<label for="sleepMinutes"><b>Sleep in Minutes:</b></label> <input
+						type="text" id="sleepMinutes" name="sleepMinutes"
+						value="${healthLog.sleepMinutes}" /> 
+						<br><label for="waterOunces"><b>Ounces
+						of Water:</b></label> <input type="text" id="waterOunces" name="waterOunces"
+						value="${healthLog.waterOunces}" /> 
+						<br><label for="mood"><b>Mood:</b></label>
+					<input type="text" id="mood" name="mood" value="${healthLog.mood}" />
+					<input type="submit" value="Update">
+				</form>
+		</center>
+			</div>
+		</div>
 </body>
 </html>

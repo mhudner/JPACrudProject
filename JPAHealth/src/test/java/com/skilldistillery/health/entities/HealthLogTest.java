@@ -35,7 +35,7 @@ class HealthLogTest {
 		@BeforeEach
 		void setUp() throws Exception {
 		    em = emf.createEntityManager();
-		    healthLog = em.find(HealthLog.class, 1);
+		    healthLog = em.find(HealthLog.class, 2);
 		}
 
 		@AfterEach

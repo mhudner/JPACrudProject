@@ -10,11 +10,13 @@ public interface HealthDAO {
 
 	List<HealthLog> findByUserName(String userName);
 
-	HealthLog createNewLog(HealthLog log);
 
 	HealthLog deleteLog(int id);
 
 
 	HealthLog updateExistingLog(HealthLog log, int id);
+
+
+	HealthLog createNewLog(HealthLog log);
 
 }

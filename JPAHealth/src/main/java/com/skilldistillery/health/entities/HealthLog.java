@@ -1,6 +1,5 @@
 package com.skilldistillery.health.entities;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -24,16 +23,16 @@ import jakarta.persistence.Table;
 	private String userName;
 	
 	@Column(name= "log_date")
-	private LocalDate logDate;
+	private String logDate;
 	
 	@Column(name= "total_steps")  
-	private int totalSteps;
+	private Integer totalSteps;
 	
 	@Column(name= "sleep_minutes")
-	private int sleepMinutes;
+	private Integer sleepMinutes;
 	
 	@Column(name= "water_ounces")
-	private int waterOunces;
+	private Integer waterOunces;
 	
 	private String mood;
 	
@@ -59,15 +58,15 @@ import jakarta.persistence.Table;
 		this.userName = userName;
 	}
 
-	public LocalDate getLogDate() {
+	public String getLogDate() {
 		return logDate;
 	}
 
-	public void setLogDate(LocalDate logDate) {
+	public void setLogDate(String logDate) {
 		this.logDate = logDate;
 	}
 
-	public int getTotalSteps() {
+	public Integer getTotalSteps() {
 		return totalSteps;
 	}
 
@@ -75,7 +74,7 @@ import jakarta.persistence.Table;
 		this.totalSteps = totalSteps;
 	}
 
-	public int getSleepMinutes() {
+	public Integer getSleepMinutes() {
 		return sleepMinutes;
 	}
 
@@ -83,7 +82,7 @@ import jakarta.persistence.Table;
 		this.sleepMinutes = sleepMinutes;
 	}
 
-	public int getWaterOunces() {
+	public Integer getWaterOunces() {
 		return waterOunces;
 	}
 
