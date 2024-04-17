@@ -22,14 +22,17 @@
 <body>
 <div class="container">
 <blockquote class="blockquote text-center">  <h1><u>
-  <p class="bg-info text-black"><h1 style="font-family:american typewriter,serif;"><h1 style="font-size:190%;">Welcome to my Communal Health Log</p></h1></h1></h1></u>
+  <p class="bg-info text-black"><h1 style="font-family:american typewriter,serif;"><h1 style="font-size:180%;">Welcome to my Communal Health Log</p></h1></h1></h1></u>
 </blockquote>
 
 </div>
-<center>
 <style>
 body {
-  background-image: url('https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2358&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+	background-image:
+		url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/illustration-of-hibiscus-flower-illustration-by-shannon-posedenti.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
 h3 {
@@ -45,9 +48,12 @@ h2 {
   text-shadow: 0 0 2px white;
   padding-top: 0%;
 }</style>
-
 	
-		
+			<div class="container">
+			<div class="form-container">
+			<br>
+<br>
+<br>
 		<h2><b>Log Entry</b></h2>
 		<div>
 			<table>
@@ -88,7 +94,8 @@ h2 {
 
 			</table>
 			</div>
-		
+		</div>
+		</div>
 <br>
 		<div class="container">
 			<div class="form-container">
@@ -115,7 +122,7 @@ h2 {
 					<input type="text" id="mood" name="mood" value="${healthLog.mood}" />
 					<input type="submit" value="Update">
 				</form>
-		</center>
+		
 			</div>
 		</div>
 </body>
